@@ -11,7 +11,13 @@ Bun.serve({
   async fetch(req) {
     const { pathname } = new URL(req.url);
     if (pathname === "/") {
-      const stream = await renderToReadableStream(<Index />);
+      const App = require("./src/App").default;
+      const stream = await renderToReadableStream(
+        <Index children={<App />} />,
+        {
+          bootstrapScripts: ["/index.js"],
+        }
+      );
       return new Response(stream, {
         headers: { "Content-Type": "text/html" },
       });
