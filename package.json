@@ -1,0 +1,14 @@
+{
+  "name": "bun-ssr-react-rendertoreadablestream",
+  "module": "server.tsx",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --watch server.tsx"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
