@@ -21,6 +21,13 @@ Bun.serve({
       return new Response(stream, {
         headers: { "Content-Type": "text/html" },
       });
+    } else if (pathname === "/index.js") {
+      const buildOutput = await Bun.build({
+        entrypoints: ["./src/BrowserEntry.tsx"],
+      });
+      return new Response(await buildOutput.outputs[0].text(), {
+        headers: { "Content-Type": "text/javascript" },
+      });
     } else {
       return new Response("Not found", { status: 404 });
     }
